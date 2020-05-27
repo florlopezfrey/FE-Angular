@@ -1,0 +1,57 @@
+
+<h3>Administración de artículos</h3>
+
+<div class="row justify-content-md-center">
+  <div class="col-md-8">
+
+    <table class="table table-borderless" *ngIf="hayRegistros(); else sinarticulos"> <!-- este "sinarticulos" es para no mostrar la tabla si el array está vacío -->
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Borrar</th>
+          <th scope="col">Modificar</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let art of articulos">
+          <td>{{art.codigo}}</td>
+          <td>{{art.descripcion}}</td>
+          <td>{{art.precio}}</td>
+          <td>
+            <button type="button" (click)="borrar(art)" class="btn"><i class="fa fa-trash"></i>
+
+            </button>
+          </td>
+          <td><button (click)="seleccionar(art)" type="button" class="btn">
+            <i class="fa fa-pencil"></i>
+          </button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+
+  </div>
+
+  <div class="col-md-8">
+    <div class="form-row mt-5 justify-content-md-center">
+      <div class="form-group col-md-3">
+        Código:<input type="number" class="form-control" [(ngModel)]="art.codigo" />
+      </div>
+      <div class="form-group col-md-3">
+        Descripción:<input type="text" class="form-control" [(ngModel)]="art.descripcion" />
+      </div>
+      <div class="form-group col-md-3">
+        Precio:<input type="number" class="form-control" [(ngModel)]="art.precio" />
+      </div>
+    </div>
+
+    <button (click)="agregar()" type="button" class="btn btn-abm">Agregar</button>
+    <button (click)="modificar()" type="button" class="btn btn-abm">Modificar</button>
+    </div>
+
+
+</div>

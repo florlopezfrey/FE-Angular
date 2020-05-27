@@ -1,0 +1,8 @@
+form {text-align: left;}
+
+.btn-addDelete {border: 1px solid whitesmoke; color: whitesmoke; margin-left: -10px;}
+.btn-addDelete:hover {background-color: rgba(255, 255, 255, 0.5);}
+
+.text-danger {color: whitesmoke !important;}
+
+.alert-success {border: 1px solid whitesmoke; background-color: rgba(255, 255, 255, 0.7); color: #623AA2;}

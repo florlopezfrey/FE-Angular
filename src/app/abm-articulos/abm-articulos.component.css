@@ -1,0 +1,12 @@
+table {color: whitesmoke}
+
+thead {background-color: whitesmoke; color: #623AA2;}
+
+.table th, .table td {padding: 0.35rem;}
+
+tbody tr {border-bottom: 1px solid whitesmoke;}
+
+.fa {color: whitesmoke;}
+
+.btn-abm {border: 1px solid whitesmoke; margin: 0 10px; color:  whitesmoke;}
+.btn-abm:hover {background-color: rgba(255, 255, 255, 0.4);}

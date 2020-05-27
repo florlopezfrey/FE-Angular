@@ -1,0 +1,31 @@
+<h3>Adivina el número</h3>
+
+<div class="form-row mt-5 justify-content-md-center">
+  <div class="col-md-6">
+
+    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show mb-5" role="alert">
+      <strong>¡Has acertado!</strong>
+      <button (click)="closeAlert()"  type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="forma">
+      {{valor}}
+    </div>
+
+    <div class="row mb-3 mt-4">
+      <div class="col-2">
+      </div>
+      <div class="col-6">
+        <input #numeroUser (keyup.enter)="addHero(numeroUser.value)" type="number" class="form-control" placeholder="Núm del 1 al 10">
+      </div>
+      <div class="col-2">
+        <button type="button" (click)="numeroRandom(numeroUser.value)" class="btn">
+          Apostar
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<h3>Añadir datos</h3>
+
+<div class="row justify-content-md-center">
+  <div class="col-md-8">
+
+    <p>Completa tus datos para añadirlos a la lista</p>
+    <div class="col-md-12">
+      <div class="form-row justify-content-md-center">
+        <div class="form-group col-md-6">
+          <input type="text" [(ngModel)]="usuario.username" [ngClass]="tieneError ? 'error': 'ok' " class="form-control mb-3" placeholder="Nombre *"/>
+          <input type="text" [(ngModel)]="usuario.email" class="form-control mb-3" placeholder="Email"/>
+          <input type="text" [(ngModel)]="usuario.provincia" class="form-control mb-3" placeholder="Localidad"/>
+        </div>
+        <div class="form-group col-md-6">
+          <input type="text" [(ngModel)]="usuario.password" class="form-control mb-3" placeholder="Contraseña"/>
+          <input type="text" [(ngModel)]="usuario.password_confirmation" class="form-control" placeholder="Confirma contraseña: "/>
+        </div>
+      </div>
+
+      <div class="form-row justify-content-md-center">
+        <button (click)="agregar()" type="button" class="btn btn-abm col-md-6 mb-4">Agregar</button>
+      </div>
+    </div>
+
+    <hr>
+
+    <table class="table table-borderless mt-5"> <!-- este "sinarticulos" es para no mostrar la tabla si el array está vacío -->
+      <thead>
+        <tr>
+          <th scope="col">Usuario</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contraseña</th>
+          <th scope="col">Confirma contraseña</th>
+          <th scope="col">Localidad</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario.username}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.password}}</td>
+          <td>{{usuario.password_confirmation}}</td>
+          <td>{{usuario.provincia}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+
+    <!-- <div [ngClass]="tieneError ? 'error': '' "> <h1>Hello</h1> </div> -->
+  </div>
+
+</div>

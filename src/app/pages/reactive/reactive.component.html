@@ -1,0 +1,131 @@
+<h3>Formulario Reactive</h3>
+
+<div class="form-row mt-5 justify-content-md-center">
+  <div class="col-8">
+
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show mb-5" role="alert">
+  <strong>¡Muchas gracias!</strong> El formulario ha sido enviado
+  <button (click)="closeAlert()"  type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- [formGroup] le indica a qién hace referencia (está en el ts) -->
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="submitForm()">
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre*</label>
+      <div class="col-10">
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               [class.is-invalid]="getNoValido('nombre')"
+               formControlName="nombre">  <!-- esto le indica a qué valor del constructor hace referencia-->
+        <small *ngIf="getNoValido('nombre')" class="text-danger">
+          Ingrese al menos 5 letras
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido*</label>
+      <div class="col-10">
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               [class.is-invalid]="getNoValido('apellido')"
+               formControlName="apellido">
+        <small *ngIf="getNoValido('apellido')" class="text-danger">
+          Ingrese al menos 5 letras
+        </small>
+      </div>
+    </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo*</label>
+    <div class="col-10">
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             [class.is-invalid]="getNoValido('email')"
+             formControlName="email">
+      <small *ngIf="getNoValido('email')" class="text-danger">
+        Ingrese un correo válido
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row" formGroupName="direccion">
+    <label class="col-2 col-form-label">Dirección*</label>
+    <div class="col-10">
+      <div class="row">
+        <div class="col-6">
+          <input type="text"
+             class="form-control"
+             placeholder="Localidad"
+             [class.is-invalid]="getNoValido('direccion.localidad')"
+             formControlName="localidad">
+          <small *ngIf="getNoValido('direccion.localidad')" class="text-danger">
+            Ingrese una localidad válida
+          </small>
+        </div>
+        <div class="col-6">
+          <input type="text"
+             class="form-control"
+             placeholder="Ciudad"
+             [class.is-invalid]="getNoValido('direccion.ciudad')"
+             formControlName="ciudad">
+          <small *ngIf="getNoValido('direccion.ciudad')" class="text-danger">
+            Ingrese una ciudad válida
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row" formArrayName="habilidades">
+    <label class="col-2 col-form-label">Habilidades</label>
+    <div class="col-10">
+      <div class="row mb-3" *ngFor="let control of habilidades.controls; let i = index">
+        <div class="col-10">
+          <input class="form-control"
+                  type="text"
+                  placeholder="Ingrese una habilidad"
+                  [formControlName]="i"> <!-- la i le indica en qué posición del array de controls debe ponerlo -->
+        </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-addDelete" (click)="addSkill()">+</button>
+        </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-addDelete" (click)="removeSkill(i)">-</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-10">
+      <button type="submit" class="btn btn-addDelete btn-block mt-3">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+</form>
+
+</div></div>
+
+<hr>
+
+<!-- <pre>
+  estado del form: {{ forma.valid }}
+  <br>
+  status: {{ forma.status}}
+</pre> -->
+
+<!-- <pre>
+  {{ forma.value | json}}
+</pre> -->

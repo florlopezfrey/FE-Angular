@@ -1,0 +1,11 @@
+.navbar { border-bottom: 1px solid white;}
+.navbar-brand {color: white; font-weight: 700;}
+.navbar-brand:hover {color: white;}
+
+.nav-link {color: white !important; font-weight: 200; font-size: 15px;}
+.active-link {font-weight: 600;}
+
+.nav-link:hover {
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
